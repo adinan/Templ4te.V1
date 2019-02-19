@@ -12,6 +12,7 @@ namespace Templ4te.V1.Domain.Usuarios
         public string CEP { get; private set; }
         public string Cidade { get; private set; }
         public string Estado { get; private set; }
+
         public int UsuarioId { get; private set; }
 
         // EF Propriedade de Navegação

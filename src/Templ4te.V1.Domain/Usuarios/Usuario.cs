@@ -8,7 +8,7 @@ namespace Templ4te.V1.Domain.Usuarios
     {
         public string Nome { get; private set; }
 
-        public Usuario(string nome, Endereco endereco)
+        public Usuario(string nome)
         {
             Nome = nome;
         }
@@ -18,6 +18,7 @@ namespace Templ4te.V1.Domain.Usuarios
             throw new NotImplementedException();
         }
 
+        protected Usuario() { }
         // EF propriedades de navegacao
         public virtual Endereco Endereco { get; private set; }
         public virtual ICollection<Telefone> Telefones { get; private set; }

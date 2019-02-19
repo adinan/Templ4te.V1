@@ -20,6 +20,9 @@ namespace Templ4te.V1.Domain.Usuarios
         public Usuario Usuario { get; set; }
 
 
+        // Construtor para o EF
+        protected Telefone() { }
+
         private void ValidarPrefixo()
         {
             RuleFor(c => c.Fixo)

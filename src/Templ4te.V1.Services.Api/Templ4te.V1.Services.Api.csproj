@@ -10,4 +10,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Templ4te.V1.Data\Templ4te.V1.Data.csproj" />
+    <ProjectReference Include="..\Templ4te.V1.Domain\Templ4te.V1.Domain.csproj" />
+    <ProjectReference Include="..\Templ4te.V1.Infra.CrossCutting.Common\Templ4te.V1.Infra.CrossCutting.Common.csproj" />
+    <ProjectReference Include="..\Templ4te.V1.Infra.CrossCutting.IoC\Templ4te.V1.Infra.CrossCutting.IoC.csproj" />
+  </ItemGroup>
+
 </Project>
