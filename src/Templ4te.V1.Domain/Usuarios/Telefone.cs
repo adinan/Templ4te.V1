@@ -10,18 +10,26 @@ namespace Templ4te.V1.Domain.Usuarios
         public int Prefixo { get; private set; }
         public string Fixo { get; private set; }
         public string Movel { get; private set; }
+        public int UsuarioId { get; private set; }
+
+        // EF propriedades de navegacao
+        public virtual Usuario Usuario { get; set; }
+
+
+        // Construtor para o EF
+        protected Telefone() { }
+        public Telefone(int prefixo, string fixo, string movel)
+        {
+            Prefixo = prefixo;
+            Fixo = fixo;
+            Movel = movel;
+        }
+
 
         public override bool EstaValido()
         {
             throw new NotImplementedException();
         }
-
-        // EF propriedades de navegacao
-        public Usuario Usuario { get; set; }
-
-
-        // Construtor para o EF
-        protected Telefone() { }
 
         private void ValidarPrefixo()
         {
@@ -57,6 +65,5 @@ namespace Templ4te.V1.Domain.Usuarios
 
             return true;
         }
-
     }
 }

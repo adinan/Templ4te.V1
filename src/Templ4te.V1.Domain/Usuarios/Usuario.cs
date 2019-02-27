@@ -6,7 +6,14 @@ namespace Templ4te.V1.Domain.Usuarios
 {
     public class Usuario : EntityBase<Usuario>
     {
-        public string Nome { get; private set; }
+        public string Nome { get; private set; }    
+
+        // EF propriedades de navegacao
+        public virtual Endereco Endereco { get; private set; }
+        public virtual ICollection<Telefone> Telefones { get; private set; }
+
+        // Construtor para o EF
+        protected Usuario() { }
 
         public Usuario(string nome)
         {
@@ -18,11 +25,7 @@ namespace Templ4te.V1.Domain.Usuarios
             throw new NotImplementedException();
         }
 
-        protected Usuario() { }
-        // EF propriedades de navegacao
-        public virtual Endereco Endereco { get; private set; }
-        public virtual ICollection<Telefone> Telefones { get; private set; }
-
+        
         public void AtribuirEndereco(Endereco endereco)
         {
             if (!endereco.EstaValido()) return;

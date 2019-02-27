@@ -42,16 +42,18 @@ namespace Templ4te.V1.Data.Configuration
                 .HasMaxLength(100)
                 .HasColumnType("varchar(100)");
 
-            builder.Ignore(e => e.ValidationResult);
 
+            builder.Ignore(e => e.Status);
+            builder.Ignore(e => e.DataCadastro);
+            builder.Ignore(e => e.ValidationResult);
             builder.Ignore(e => e.CascadeMode);
 
-            builder.HasOne(e => e.Usuario)
-                .WithOne(u => u.Endereco)
-                .HasForeignKey<Endereco>(e => e.UsuarioId)
-                .IsRequired();
+            //Para criar apenas uma Tabela e juntas as propriedades de endereço com a do Usuario
+            builder.ToTable("Usuarios");
 
-            builder.ToTable("Enderecos");
+            builder.HasOne(a => a.Usuario)
+                .WithOne(b => b.Endereco)
+                .HasForeignKey<Endereco>(b => b.Id);
         }
     }
 }

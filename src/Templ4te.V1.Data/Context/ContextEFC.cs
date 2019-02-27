@@ -13,32 +13,16 @@ namespace Templ4te.V1.Data.Context
     {
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
-
-
+        public DbSet<Endereco> Enderecos { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            modelBuilder.Entity<Usuario>()
-                .Property(s => s.Id)
-                .HasColumnName("Id")
-                .HasDefaultValue(0)
-                .IsRequired();
-
             modelBuilder.ApplyConfiguration(new UsuarioConfig());
             modelBuilder.ApplyConfiguration(new TelefoneConfig());
             modelBuilder.ApplyConfiguration(new EnderecoConfig());
 
-
-
-            //modelBuilder.AddConfiguration(new UsuarioConfig());
-            //modelBuilder.AddConfiguration(new OrganizadorConfig());
-            //modelBuilder.AddConfiguration(new EnderecoConfig());
-            //modelBuilder.AddConfiguration(new CategoriaConfig());
-
             base.OnModelCreating(modelBuilder);
         }
-        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -46,8 +30,9 @@ namespace Templ4te.V1.Data.Context
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
-
             optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+
+            //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
         }
 
     }

@@ -10,10 +10,12 @@ namespace Templ4te.V1.Domain
         protected EntityBase()
         {
             ValidationResult = new ValidationResult();
+            DataCadastro = DateTime.Now;
         }
 
-        public int Id { get; set; }
-        public DateTime DataCadastro { get; set; }
+        public int Id { get; protected set; }
+        public DateTime DataCadastro { get; private set; }
+        public int Status { get; protected set; }
 
 
         public abstract bool EstaValido();

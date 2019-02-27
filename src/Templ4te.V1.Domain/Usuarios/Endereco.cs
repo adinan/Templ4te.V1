@@ -12,13 +12,16 @@ namespace Templ4te.V1.Domain.Usuarios
         public string CEP { get; private set; }
         public string Cidade { get; private set; }
         public string Estado { get; private set; }
+        //public int UsuarioId { get; private set; }
 
-        public int UsuarioId { get; private set; }
 
         // EF Propriedade de Navegação
         public virtual Usuario Usuario { get; private set; }
 
-        public Endereco(int id, string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado, int usuarioId)
+        // Construtor para o EF
+        protected Endereco() { }
+
+        public Endereco(int id, string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado)
         {
             Id = id;
             Logradouro = logradouro;
@@ -27,12 +30,9 @@ namespace Templ4te.V1.Domain.Usuarios
             Bairro = bairro;
             CEP = cep;
             Cidade = cidade;
-            Estado = estado;
-            UsuarioId = usuarioId;
+            Estado = estado;            
         }
 
-        // Construtor para o EF
-        protected Endereco() { }
 
         public override bool EstaValido()
         {
