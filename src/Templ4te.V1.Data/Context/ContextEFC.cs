@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 using Templ4te.V1.Data.Configuration;
 using Templ4te.V1.Domain.Usuarios;
 

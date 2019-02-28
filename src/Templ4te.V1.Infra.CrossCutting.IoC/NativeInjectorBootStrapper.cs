@@ -24,6 +24,7 @@ namespace Templ4te.V1.Infra.CrossCutting.IoC
 
             #region Infra
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ITelefoneRepository, TelefoneRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ContextEFC>();

@@ -33,6 +33,7 @@ namespace Templ4te.V1.Services.Api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+
             //Registrar todos os DI
             NativeInjectorBootStrapper.RegisterServices(services);
         }
