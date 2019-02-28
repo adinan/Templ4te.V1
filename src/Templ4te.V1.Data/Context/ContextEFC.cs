@@ -11,6 +11,11 @@ namespace Templ4te.V1.Data.Context
 {
     public class ContextEFC : DbContext
     {
+
+        public ContextEFC(DbContextOptions<ContextEFC> options) : base(options)
+        {
+        }
+
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
@@ -23,17 +28,5 @@ namespace Templ4te.V1.Data.Context
 
             base.OnModelCreating(modelBuilder);
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-
-            //optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-        }
-
     }
 }

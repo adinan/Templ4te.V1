@@ -21,9 +21,8 @@ namespace Templ4te.V1.Domain.Usuarios
         // Construtor para o EF
         protected Endereco() { }
 
-        public Endereco(int id, string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado)
+        public Endereco(string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado)
         {
-            Id = id;
             Logradouro = logradouro;
             Numero = numero;
             Complemento = complemento;
