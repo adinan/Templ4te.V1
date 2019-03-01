@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 using Templ4te.V1.Data.Context;
 using Templ4te.V1.Infra.CrossCutting.IoC;
 
@@ -28,11 +23,21 @@ namespace Templ4te.V1.Services.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ContextEFC>(options => 
+            services.AddDbContext<ContextEFC>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new Info
+                {
+                    Title = "Templ4te.V1 API",
+                    Version = "v1",
+                    Description = "API do Site Templ4te.V1"
+                });
+            });
 
             //Registrar todos os DI
             NativeInjectorBootStrapper.RegisterServices(services);
@@ -53,6 +58,18 @@ namespace Templ4te.V1.Services.Api
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Templ4te.V1 API v1.0");
+            });
+
+            var opt = new RewriteOptions();
+            opt.AddRedirect("^$", "swagger");
+            app.UseRewriter(opt);
+
         }
     }
 }
