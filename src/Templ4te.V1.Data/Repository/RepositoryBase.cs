@@ -20,14 +20,14 @@ namespace Templ4te.V1.Data
             DbSet = Db.Set<TEntity>();
         }
 
-        public virtual void Adicionar(TEntity obj)
+        public virtual void Adicionar(TEntity entity)
         {
-            DbSet.Add(obj);
+            DbSet.Add(entity);
         }
 
-        public virtual void Atualizar(TEntity obj)
+        public virtual void Atualizar(TEntity entity)
         {
-            DbSet.Update(obj);
+            DbSet.Update(entity);
         }
 
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
@@ -45,7 +45,7 @@ namespace Templ4te.V1.Data
             return DbSet.ToList();
         }
 
-        public virtual void Remover(Guid id)
+        public virtual void Remover(int id)
         {
             DbSet.Remove(DbSet.Find(id));
         }

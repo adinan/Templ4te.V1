@@ -1,10 +1,11 @@
-﻿using Templ4te.V1.Data.Context;
+﻿using System.Linq;
+using Templ4te.V1.Data.Context;
 using Templ4te.V1.Domain.Usuarios;
 using Templ4te.V1.Domain.Usuarios.Interfaces;
 
 namespace Templ4te.V1.Data
 {
-    public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
+    public sealed class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
     {
         public UsuarioRepository(ContextEFC contextEFC)
             :base(contextEFC)
@@ -21,6 +22,10 @@ namespace Templ4te.V1.Data
         {
             Db.Enderecos.Update(endereco);
         }
-        
+
+        public Usuario ObterPorCpf(string cpf)
+        {
+            return Db.Usuarios.FirstOrDefault(p => p.Cpf == cpf);
+        }
     }
 }

@@ -7,7 +7,12 @@ namespace Templ4te.V1.Services.Api.Controllers
     [Produces("application/json")]
     public abstract class BaseController : ControllerBase
     {
-        public Dictionary<string, string> _notifications { get; set; }
+        public Dictionary<string, string> _notifications { get; protected set; }
+
+        public BaseController(Dictionary<string, string> notifications)
+        {
+            _notifications = notifications;
+        }
 
         protected new IActionResult Response(object result = null)
         {

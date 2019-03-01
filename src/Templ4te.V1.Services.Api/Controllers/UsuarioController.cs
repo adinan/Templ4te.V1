@@ -13,6 +13,7 @@ namespace Templ4te.V1.Services.Api.Controllers
         private readonly IUsuarioService _usuarioService;
 
         public UsuarioController(IUsuarioRepository usuarioRepository, IUsuarioService usuarioService)
+            :base(null)
         {
             _usuarioRepository = usuarioRepository;
             _usuarioService = usuarioService;
@@ -22,6 +23,9 @@ namespace Templ4te.V1.Services.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            var teste = new Dictionary<string, string>();
+            teste.Add("123", "teste de erro");
+
             return _usuarioRepository.ObterTodos().Select(p => p.Nome);
             //return new string[] { "value1", "value2" };
         }

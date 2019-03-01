@@ -8,8 +8,9 @@ namespace Templ4te.V1.Domain
 {
     public abstract class ServiceBase<TEntity> : IDisposable, IServiceBase<TEntity> where TEntity : EntityBase<TEntity>
     {
-        private readonly IRepositoryBase<TEntity> _repositorio;
+        protected readonly IRepositoryBase<TEntity> _repositorio;
         protected readonly IUnitOfWork _unitOfWork;
+        public Dictionary <string,string> _notifications { get; protected set; }
 
         public ServiceBase(IRepositoryBase<TEntity> repository, IUnitOfWork unitOfWork)
         {

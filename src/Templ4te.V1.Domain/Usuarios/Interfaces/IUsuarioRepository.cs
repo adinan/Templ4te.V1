@@ -6,5 +6,7 @@ namespace Templ4te.V1.Domain.Usuarios.Interfaces
     {
         void AdicionarEndereco(Endereco endereco);
         void AtualizarEndereco(Endereco endereco);
+
+        Usuario ObterPorCpf(string cpf);
     }
 }
