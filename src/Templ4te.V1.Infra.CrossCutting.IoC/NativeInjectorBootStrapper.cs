@@ -3,6 +3,7 @@ using Templ4te.V1.Data;
 using Templ4te.V1.Data.Context;
 using Templ4te.V1.Data.UoW;
 using Templ4te.V1.Domain.Interfaces;
+using Templ4te.V1.Domain.Notifications;
 using Templ4te.V1.Domain.Usuarios.Interfaces;
 using Templ4te.V1.Domain.Usuarios.Servicos;
 
@@ -19,6 +20,10 @@ namespace Templ4te.V1.Infra.CrossCutting.IoC
 
             #region Domain
             services.AddScoped<IUsuarioService, UsuarioServico>();
+            services.AddScoped<IDomainNotificationList, DomainNotificationList>();
+
+            //services.AddScoped(typeof(IDomainNotificationList<>), typeof(DomainNotificationList<>));
+
 
             #endregion
 

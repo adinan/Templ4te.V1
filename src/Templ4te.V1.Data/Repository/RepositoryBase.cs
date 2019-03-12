@@ -50,10 +50,10 @@ namespace Templ4te.V1.Data
             DbSet.Remove(DbSet.Find(id));
         }
 
-        public int SaveChanges()
-        {
-            return Db.SaveChanges();
-        }
+        //public int SaveChanges()
+        //{
+        //    return Db.SaveChanges();
+        //}
 
         public void Dispose()
         {

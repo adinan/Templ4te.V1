@@ -24,14 +24,14 @@ namespace Templ4te.V1.Data.Context
 
             var usuarios = new Usuario[]
             {
-            new Usuario("Adinan Silva dos Santos Junior"),
-            new Usuario("Carlos Barros"),
-            new Usuario("Dio Bueno"),
-            new Usuario("Ronann Cruz"),
-            new Usuario("Rafa Calegas"),
-            new Usuario("Livia Varela"),
-            new Usuario("Silvia Ocampos"),
-            new Usuario("Fulano De Tal")
+            new Usuario("Adinan Silva dos Santos Junior", "026.103.931-80"),
+            new Usuario("Carlos Barros", "276.066.038-98"),
+            new Usuario("Dio Bueno", "884.209.875-22"),
+            new Usuario("Ronann Cruz", "884.209.875-22"),
+            new Usuario("Rafa Calegas", "884.209.875-22"),
+            new Usuario("Livia Varela", "884.209.875-22"),
+            new Usuario("Silvia Ocampos", "884.209.875-22"),
+            new Usuario("Fulano De Tal", "884.209.875-22")
             };
             foreach (var u in usuarios)
             {

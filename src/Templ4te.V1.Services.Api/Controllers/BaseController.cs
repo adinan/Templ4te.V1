@@ -1,17 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Templ4te.V1.Domain.Notifications;
 
 namespace Templ4te.V1.Services.Api.Controllers
 {
     [Produces("application/json")]
     public abstract class BaseController : ControllerBase
     {
-        public Dictionary<string, string> _notifications { get; protected set; }
+        protected IDomainNotificationList Notifications;
 
-        public BaseController(Dictionary<string, string> notifications)
+        public BaseController(IDomainNotificationList notifications)
         {
-            _notifications = notifications;
+            Notifications = notifications;
         }
 
         protected new IActionResult Response(object result = null)
@@ -28,13 +30,13 @@ namespace Templ4te.V1.Services.Api.Controllers
             return BadRequest(new
             {
                 success = false,
-                errors = _notifications.Select(n => n.Value)
+                errors = Notifications.GetNotifications().Select(n => n.Value)
             });
         }
 
         protected bool OperacaoValida()
         {
-            return !_notifications.Any();
+            return !Notifications.GetNotifications().Any();
         }
 
         protected void NotificarErroModelInvalida()
@@ -43,13 +45,13 @@ namespace Templ4te.V1.Services.Api.Controllers
             foreach (var erro in erros)
             {
                 var erroMsg = erro.Exception == null ? erro.ErrorMessage : erro.Exception.Message;
-                NotificarErro(string.Empty, erroMsg);
+                NotificarErro(erroMsg, "ModelState");
             }
         }
 
-        protected void NotificarErro(string codigo, string mensagem)
+        protected void NotificarErro(string mensagem, string sender = null, string codigo = null)
         {
-            _notifications.Add(codigo, mensagem);
+            Notifications.Add(mensagem, sender, codigo);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Templ4te.V1.Data.UoW
 
         public int Commit()
         {
-            throw new NotImplementedException();
+            return _context.SaveChanges();
         }
 
         public void Dispose()

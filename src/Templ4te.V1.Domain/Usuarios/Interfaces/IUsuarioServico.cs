@@ -4,8 +4,9 @@ namespace Templ4te.V1.Domain.Usuarios.Interfaces
 {
     public interface IUsuarioService : IServiceBase<Usuario>
     {
-        //Usuario Autenticar(string cpf, string senha);
-        //Usuario ObterPorCpf(string cpf);
+        void Adicionar(Usuario usuario);
+        void Atualizar(Usuario usuario);
         void Remover(int id);
+
     }
 }

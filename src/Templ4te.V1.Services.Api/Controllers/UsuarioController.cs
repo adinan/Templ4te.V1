@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Templ4te.V1.Domain.Notifications;
+using Templ4te.V1.Domain.Usuarios;
 using Templ4te.V1.Domain.Usuarios.Interfaces;
 
 namespace Templ4te.V1.Services.Api.Controllers
@@ -11,9 +13,10 @@ namespace Templ4te.V1.Services.Api.Controllers
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IUsuarioService _usuarioService;
+        private readonly string sender = typeof(UsuarioController).Name;
 
-        public UsuarioController(IUsuarioRepository usuarioRepository, IUsuarioService usuarioService)
-            :base(null)
+        public UsuarioController(IUsuarioRepository usuarioRepository, IUsuarioService usuarioService, IDomainNotificationList notification)            
+            :base(notification)
         {
             _usuarioRepository = usuarioRepository;
             _usuarioService = usuarioService;
@@ -23,11 +26,16 @@ namespace Templ4te.V1.Services.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            var teste = new Dictionary<string, string>();
-            teste.Add("123", "teste de erro");
+            Notifications.Add("erro da controller usuario", sender);
+
+            var endereco = new Endereco("", "", "", "", "", "", "");
+
+            var usuario = new Usuario("Jonh Doe", "026.103.931-80");
+            //usuario.AtribuirEndereco(endereco);
+
+            _usuarioService.Adicionar(usuario);
 
             return _usuarioRepository.ObterTodos().Select(p => p.Nome);
-            //return new string[] { "value1", "value2" };
         }
 
         // GET: api/Usuario/5
@@ -49,9 +57,10 @@ namespace Templ4te.V1.Services.Api.Controllers
 
             //var eventoCommand = _mapper.Map<RegistrarEventoCommand>(eventoViewModel);
 
-            //_bus.SendCommand(eventoCommand);
+            var usuario = new Usuario("Jonh Doe", "026.103.931-80");
+            _usuarioService.Adicionar(usuario);
             //return Response(eventoCommand);
-            return null;
+            return Response(value);
         }
 
         // PUT: api/Usuario/5

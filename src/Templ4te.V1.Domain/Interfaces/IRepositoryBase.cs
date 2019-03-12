@@ -12,6 +12,6 @@ namespace Templ4te.V1.Domain.Interfaces
         void Atualizar(TEntity entity);
         void Remover(int id);
         IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate);
-        int SaveChanges();
+        //int SaveChanges();
     }
 }

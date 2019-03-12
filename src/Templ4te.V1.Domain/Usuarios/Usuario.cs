@@ -22,7 +22,7 @@ namespace Templ4te.V1.Domain.Usuarios
             Nome = nome;
             Cpf = cpf.RemoveMask();
         }
-        
+
 
         public void AtribuirEndereco(Endereco endereco)
         {
@@ -57,11 +57,15 @@ namespace Templ4te.V1.Domain.Usuarios
             ValidarEndereco();
             ValidarNome();
             ValidarCpf();
+            ValidationResult = Validate(this);
         }
 
         private void ValidarEndereco()
         {
-            if (Endereco.EstaValido()) return;
+            RuleFor(c => c.Endereco)
+               .NotEmpty().WithMessage("É preciso cadastrar um endereço.");
+
+            if (Endereco == null || Endereco.EstaValido()) return;
 
             foreach (var error in Endereco.ValidationResult.Errors)
             {

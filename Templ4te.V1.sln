@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{A0551792-CA66-4F8D-98D0-F42D0CDD4A79}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{2695B56E-8389-48D5-BCDF-AD5A991040F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{5002F0C1-3461-4304-B3A6-728C4781547F}"
@@ -19,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templ4te.V1.Domain", "src\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templ4te.V1.Data", "src\Templ4te.V1.Data\Templ4te.V1.Data.csproj", "{68DF0203-A4AE-4B6E-8C30-EAFBD55CD23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templ4te.V1.Infra.CrossCutting.Common", "src\Templ4te.V1.Infra.CrossCutting.Common\Templ4te.V1.Infra.CrossCutting.Common.csproj", "{1F3BEF13-3819-4A95-981D-F245B4FBB685}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templ4te.V1.Infra.CrossCutting.Common", "src\Templ4te.V1.Infra.CrossCutting.Common\Templ4te.V1.Infra.CrossCutting.Common.csproj", "{1F3BEF13-3819-4A95-981D-F245B4FBB685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templ4te.V1.Infra.CrossCutting.IoC", "src\Templ4te.V1.Infra.CrossCutting.IoC\Templ4te.V1.Infra.CrossCutting.IoC.csproj", "{1BE7FDC9-883B-478B-BDE2-85A2275BAB6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templ4te.V1.Infra.CrossCutting.IoC", "src\Templ4te.V1.Infra.CrossCutting.IoC\Templ4te.V1.Infra.CrossCutting.IoC.csproj", "{1BE7FDC9-883B-478B-BDE2-85A2275BAB6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templ4te.V1.Services.Api", "src\Templ4te.V1.Services.Api\Templ4te.V1.Services.Api.csproj", "{C73012F4-9788-4210-A8DA-FBAA638D65B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templ4te.V1.Services.Api", "src\Templ4te.V1.Services.Api\Templ4te.V1.Services.Api.csproj", "{C73012F4-9788-4210-A8DA-FBAA638D65B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
